@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Abhay Kumar Jha, featuring travel, atmosphere, and light photography.">
 <title>Abhay Kumar Jha | Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --bg:#0d0d0d;
     --text:#f3efe7;
@@ -39,20 +38,17 @@ body{
 }
 
 /* Film Grain */
-
 .grain{
     position:fixed;
     inset:0;
     pointer-events:none;
     opacity:.05;
-    background-image:
-    radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
     background-size:4px 4px;
     z-index:9999;
 }
 
 /* Cursor */
-
 .cursor{
     width:20px;
     height:20px;
@@ -60,9 +56,10 @@ body{
     border-radius:50%;
     position:fixed;
     pointer-events:none;
-    transform:translate(-50%,-50%);
+    top: 0;
+    left: 0;
     z-index:99999;
-    transition:.2s;
+    transition: width 0.2s, height 0.2s; /* Removed transform from transition for performance */
 }
 
 .cursor.expand{
@@ -71,7 +68,6 @@ body{
 }
 
 /* Navbar */
-
 nav{
     position:fixed;
     top:0;
@@ -81,27 +77,37 @@ nav{
     justify-content:space-between;
     align-items:center;
     z-index:1000;
-    backdrop-filter: blur(20px);
-background:rgba(10,10,10,.2);
-border-bottom:1px solid rgba(255,255,255,.05);
-backdrop-filter: blur(30px);
-background: rgba(10,10,10,.2);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    backdrop-filter: blur(30px);
+    background: rgba(10,10,10,.2);
 }
 
 .logo{
-
-font-family:'Cormorant Garamond',serif;
-font-size:2rem;
-letter-spacing:.1em;
-transition:.4s;
-cursor:pointer;
-
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
+    letter-spacing:.1em;
+    transition:.4s;
+    cursor:pointer;
 }
 
 .logo:hover{
+    letter-spacing:.2em;
+}
 
-letter-spacing:.2em;
+/* Hamburger Icon Base Styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1001; 
+}
 
+.hamburger div {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text);
+    transition: all 0.3s ease;
 }
 
 .links{
@@ -118,7 +124,6 @@ letter-spacing:.2em;
 }
 
 /* HERO */
-
 .hero{
     min-height:100vh;
     display:flex;
@@ -144,14 +149,7 @@ letter-spacing:.2em;
     content:"";
     position:absolute;
     inset:0;
-
-    background:
-    radial-gradient(
-        circle,
-        transparent 40%,
-        rgba(0,0,0,.7)
-    );
-
+    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,.7));
     pointer-events:none;
 }
 
@@ -159,11 +157,13 @@ letter-spacing:.2em;
     position:relative;
     z-index:2;
 }
-/* HERO */
 
-
-
-
+.archive-text {
+    font-size:.75rem;
+    letter-spacing:.5em;
+    color:#666;
+    margin-bottom:30px;
+}
 
 .overline{
     letter-spacing:.4em;
@@ -178,8 +178,7 @@ letter-spacing:.2em;
     font-weight:300;
     line-height:.95;
     margin-top:30px;
-    text-shadow:
-0 0 60px rgba(255,255,255,.08);
+    text-shadow: 0 0 60px rgba(255,255,255,.08);
 }
 
 .hero p{
@@ -190,7 +189,6 @@ letter-spacing:.2em;
 }
 
 /* ABOUT */
-
 .about{
     max-width:800px;
     margin:auto;
@@ -212,7 +210,6 @@ letter-spacing:.2em;
 }
 
 /* GALLERY */
-
 .gallery{
     padding:0 5% 100px;
 }
@@ -233,17 +230,67 @@ letter-spacing:.2em;
     width:100%;
     display:block;
     border-radius:22px;
-    transition:.5s;
-   box-shadow:
-0 20px 50px rgba(0,0,0,.4),
-0 50px 120px rgba(0,0,0,.35);
+    transition: transform .5s ease, opacity .5s ease, box-shadow .5s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,.4), 0 50px 120px rgba(0,0,0,.35);
 }
 
 .masonry-item:hover img,
 .masonry-item:hover video{
     transform:scale(1.03);
+    box-shadow: 0 40px 90px rgba(0,0,0,.7);
 }
 
+.masonry:hover .masonry-item{
+    opacity:.35;
+}
+
+.masonry .masonry-item:hover{
+    opacity:1;
+    z-index:100;
+}
+
+/* FOOTER */
+.footer-container {
+    padding:120px 30px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.05);
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,.01));
+}
+
+.footer-container a{
+    transition:.3s;
+}
+
+.footer-container a:hover{
+    opacity:.6;
+}
+
+.footer-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:4rem;
+    font-weight:300;
+    margin-bottom:30px;
+}
+
+.footer-links {
+    color:#9b978f;
+    margin-bottom:40px;
+    line-height:2;
+}
+
+.footer-links a {
+    color:#f3efe7;
+    text-decoration:none;
+}
+
+.footer-copyright {
+    color:#666;
+    font-size:.8rem;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+}
+
+/* MOBILE RESPONSIVENESS */
 @media(max-width:900px){
     .masonry{
         column-count:2;
@@ -251,9 +298,44 @@ letter-spacing:.2em;
 }
 
 @media(max-width:700px){
+    .hamburger {
+        display: flex;
+    }
 
-    .links{
-        display:none;
+    .links {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%); 
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .links.active {
+        transform: translateX(0);
+    }
+
+    .links a {
+        font-size: 1.5rem;
+        margin: 15px 0;
+    }
+
+    .hamburger.active .line1 {
+        transform: rotate(-45deg) translate(-5px, 5px);
+    }
+    
+    .hamburger.active .line2 {
+        opacity: 0;
+    }
+    
+    .hamburger.active .line3 {
+        transform: rotate(45deg) translate(-5px, -5px);
     }
 
     .masonry{
@@ -264,79 +346,16 @@ letter-spacing:.2em;
         font-size:4rem;
     }
 }
+
+/* ANIMATIONS */
 @keyframes slowZoom{
-
-0%{
-transform:scale(1.05);
+    0%{ transform:scale(1.05); }
+    100%{ transform:scale(1.15); }
 }
 
-100%{
-transform:scale(1.15);
-}
-
-}
-
-footer a{
-transition:.3s;
-}
-
-footer a:hover{
-opacity:.6;
-}
-
-
-.masonry .masonry-item:hover{
-opacity:1;
-}
-
-.masonry-item img,
-.masonry-item video{
-transition:
-transform .5s ease,
-opacity .5s ease,
-box-shadow .5s ease;
-}
-
-.masonry-item:hover img,
-.masonry-item:hover video{
-box-shadow:
-0 40px 90px rgba(0,0,0,.7);
-}
-.masonry:hover .masonry-item{
-opacity:.35;
-}
-
-.masonry .masonry-item:hover{
-opacity:1;
-z-index:100;
-}
-footer{
-
-padding:120px 30px;
-text-align:center;
-
-border-top:1px solid rgba(255,255,255,.05);
-
-background:
-linear-gradient(
-to bottom,
-transparent,
-rgba(255,255,255,.01)
-);
-
-}
 @keyframes pageLoad{
-
-0%{
-opacity:0;
-transform:translateY(20px);
-}
-
-100%{
-opacity:1;
-transform:translateY(0);
-}
-
+    0%{ opacity:0; transform:translateY(20px); }
+    100%{ opacity:1; transform:translateY(0); }
 }
 </style>
 </head>
@@ -347,221 +366,151 @@ transform:translateY(0);
 <div class="cursor"></div>
 
 <nav>
+    <div class="logo">A K J</div>
+    
+    <div class="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
 
-<div class="logo">
-A K J
-</div>
-
-<div class="links">
-<a href="#about">About</a>
-<a href="#work">Work</a>
-<a href="#contact">Contact</a>
-</div>
-
+    <div class="links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
 <section class="hero">
-
-<div class="hero-bg"></div>
-
-<div class="hero-content">
-
-<div style="
-font-size:.75rem;
-letter-spacing:.5em;
-color:#666;
-margin-bottom:30px;
-">
-ARCHIVE · MMXXVI
-</div>
-
-<div class="overline">
-ABHAY KUMAR JHA
-</div>
-
-
-<h1>
-Photographs<br>
-from places<br>
-I almost forgot.
-</h1>
-
-<p>
-Travel • Atmosphere • Light
-</p>
-
-</div>
-
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="archive-text">ARCHIVE · MMXXVI</div>
+        <div class="overline">ABHAY KUMAR JHA</div>
+        <h1>Photographs<br>from places<br>I almost forgot.</h1>
+        <p>Travel • Atmosphere • Light</p>
+    </div>
 </section>
 
 <section class="about" id="about">
-
-<h2>Stories Through Light</h2>
-
-<p>
-A collection of fleeting moments, quiet places and memories that almost disappeared with time.
-These photographs are less about documenting reality and more about preserving how it felt to be there.
-</p>
-
+    <h2>Stories Through Light</h2>
+    <p>
+        A collection of fleeting moments, quiet places and memories that almost disappeared with time.
+        These photographs are less about documenting reality and more about preserving how it felt to be there.
+    </p>
 </section>
 
 <section class="gallery" id="work">
+    <div class="masonry">
+        <div class="masonry-item"><img src="shot-1.jpeg" loading="lazy" alt="Moody atmospheric photography 1"></div>
+        <div class="masonry-item"><img src="shot-2.jpeg" loading="lazy" alt="Moody atmospheric photography 2"></div>
+        <div class="masonry-item"><img src="shot-3.jpeg" loading="lazy" alt="Moody atmospheric photography 3"></div>
 
-<div class="masonry">
-    <div class="masonry-item"><img src="shot-1.jpeg"></div>
-<div class="masonry-item"><img src="shot-2.jpeg"></div>
-<div class="masonry-item"><img src="shot-3.jpeg"></div>
+        <div class="masonry-item">
+            <video autoplay muted loop playsinline>
+                <source src="shot-26.mp4" type="video/mp4">
+            </video>
+        </div>
 
-<div class="masonry-item">
-    <video autoplay muted loop playsinline>
-        <source src="shot-26.mp4" type="video/mp4">
-    </video>
-</div>
+        <div class="masonry-item"><img src="shot-4.jpeg" loading="lazy" alt="Moody atmospheric photography 4"></div>
+        <div class="masonry-item"><img src="shot-5.jpeg" loading="lazy" alt="Moody atmospheric photography 5"></div>
+        <div class="masonry-item"><img src="shot-6.jpeg" loading="lazy" alt="Moody atmospheric photography 6"></div>
+        <div class="masonry-item"><img src="shot-7.jpeg" loading="lazy" alt="Moody atmospheric photography 7"></div>
+        <div class="masonry-item"><img src="shot-8.jpeg" loading="lazy" alt="Moody atmospheric photography 8"></div>
 
-<div class="masonry-item"><img src="shot-4.jpeg"></div>
-<div class="masonry-item"><img src="shot-5.jpeg"></div>
-<div class="masonry-item"><img src="shot-6.jpeg"></div>
-<div class="masonry-item"><img src="shot-7.jpeg"></div>
-<div class="masonry-item"><img src="shot-8.jpeg"></div>
+        <div class="masonry-item">
+            <video autoplay muted loop playsinline>
+                <source src="shot-27.mp4" type="video/mp4">
+            </video>
+        </div>
 
-<div class="masonry-item">
-    <video autoplay muted loop playsinline>
-        <source src="shot-27.mp4" type="video/mp4">
-    </video>
-</div>
+        <div class="masonry-item"><img src="shot-9.jpeg" loading="lazy" alt="Moody atmospheric photography 9"></div>
+        <div class="masonry-item"><img src="shot-10.jpeg" loading="lazy" alt="Moody atmospheric photography 10"></div>
+        <div class="masonry-item"><img src="shot-11.jpeg" loading="lazy" alt="Moody atmospheric photography 11"></div>
+        <div class="masonry-item"><img src="shot-12.jpeg" loading="lazy" alt="Moody atmospheric photography 12"></div>
+        <div class="masonry-item"><img src="shot-13.jpeg" loading="lazy" alt="Moody atmospheric photography 13"></div>
+        <div class="masonry-item"><img src="shot-14.jpeg" loading="lazy" alt="Moody atmospheric photography 14"></div>
 
-<div class="masonry-item"><img src="shot-9.jpeg"></div>
-<div class="masonry-item"><img src="shot-10.jpeg"></div>
-<div class="masonry-item"><img src="shot-11.jpeg"></div>
-<div class="masonry-item"><img src="shot-12.jpeg"></div>
-<div class="masonry-item"><img src="shot-13.jpeg"></div>
-<div class="masonry-item"><img src="shot-14.jpeg"></div>
+        <div class="masonry-item">
+            <video autoplay muted loop playsinline>
+                <source src="shot-28.mp4" type="video/mp4">
+            </video>
+        </div>
 
-<div class="masonry-item">
-    <video autoplay muted loop playsinline>
-        <source src="shot-28.mp4" type="video/mp4">
-    </video>
-</div>
-
-<div class="masonry-item"><img src="shot-15.jpeg"></div>
-<div class="masonry-item"><img src="shot-16.jpeg"></div>
-<div class="masonry-item"><img src="shot-17.jpeg"></div>
-<div class="masonry-item"><img src="shot-18.jpeg"></div>
-<div class="masonry-item"><img src="shot-19.jpeg"></div>
-<div class="masonry-item"><img src="shot-20.jpeg"></div>
-<div class="masonry-item"><img src="shot-21.jpeg"></div>
-<div class="masonry-item"><img src="shot-22.jpeg"></div>
-<div class="masonry-item"><img src="shot-23.jpeg"></div>
-<div class="masonry-item"><img src="shot-24.jpeg"></div>
-<div class="masonry-item"><img src="shot-25.jpeg"></div>
-</div>
+        <div class="masonry-item"><img src="shot-15.jpeg" loading="lazy" alt="Moody atmospheric photography 15"></div>
+        <div class="masonry-item"><img src="shot-16.jpeg" loading="lazy" alt="Moody atmospheric photography 16"></div>
+        <div class="masonry-item"><img src="shot-17.jpeg" loading="lazy" alt="Moody atmospheric photography 17"></div>
+        <div class="masonry-item"><img src="shot-18.jpeg" loading="lazy" alt="Moody atmospheric photography 18"></div>
+        <div class="masonry-item"><img src="shot-19.jpeg" loading="lazy" alt="Moody atmospheric photography 19"></div>
+        <div class="masonry-item"><img src="shot-20.jpeg" loading="lazy" alt="Moody atmospheric photography 20"></div>
+        <div class="masonry-item"><img src="shot-21.jpeg" loading="lazy" alt="Moody atmospheric photography 21"></div>
+        <div class="masonry-item"><img src="shot-22.jpeg" loading="lazy" alt="Moody atmospheric photography 22"></div>
+        <div class="masonry-item"><img src="shot-23.jpeg" loading="lazy" alt="Moody atmospheric photography 23"></div>
+        <div class="masonry-item"><img src="shot-24.jpeg" loading="lazy" alt="Moody atmospheric photography 24"></div>
+        <div class="masonry-item"><img src="shot-25.jpeg" loading="lazy" alt="Moody atmospheric photography 25"></div>
+    </div>
 </section>
 
-<footer id="contact" style="
-padding:120px 30px;
-text-align:center;
-">
-
-<h2 style="
-font-family:'Cormorant Garamond',serif;
-font-size:4rem;
-font-weight:300;
-margin-bottom:30px;
-">
-Get In Touch
-</h2>
-
-<p style="
-color:#9b978f;
-margin-bottom:40px;
-line-height:2;
-">
-
-<a
-href="https://instagram.com/abhay.lmao"
-target="_blank"
-style="
-color:#f3efe7;
-text-decoration:none;
-"
->
-Instagram — @abhay.lmao
-</a>
-
-<br><br>
-
-<a
-href="mailto:abhay.jha@somaiya.edu"
-style="
-color:#f3efe7;
-text-decoration:none;
-"
->
-abhay.jha@somaiya.edu
-</a>
-
-</p>
-
-<p style="
-color:#666;
-font-size:.8rem;
-letter-spacing:.25em;
-text-transform:uppercase;
-">
-© 2026 ABHAY KUMAR JHA
-</p>
-
+<footer class="footer-container" id="contact">
+    <h2 class="footer-title">Get In Touch</h2>
+    <p class="footer-links">
+        <a href="https://instagram.com/abhay.lmao" target="_blank">Instagram — @abhay.lmao</a>
+        <br><br>
+        <a href="mailto:abhay.jha@somaiya.edu">abhay.jha@somaiya.edu</a>
+    </p>
+    <p class="footer-copyright">© 2026 ABHAY KUMAR JHA</p>
 </footer>
 
 <script>
+    // Optimized Custom Cursor
+    const cursor = document.querySelector(".cursor");
 
-const cursor=document.querySelector(".cursor");
+    document.addEventListener("mousemove", (e) => {
+        // GPU-accelerated transform instead of top/left for better performance
+        cursor.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+    });
 
-document.addEventListener("mousemove",(e)=>{
+    // Masonry Hover Effect
+    const items = document.querySelectorAll(".masonry-item");
 
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
+    items.forEach(item => {
+        item.addEventListener("mousemove", (e) => {
+            const media = item.querySelector("img,video");
+            const rect = item.getBoundingClientRect();
+            
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -6;
+            const rotateY = ((x - centerX) / centerX) * 6;
+            
+            media.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+        });
 
-});
+        item.addEventListener("mouseleave", () => {
+            const media = item.querySelector("img,video");
+            media.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+        });
+    });
 
-const items=document.querySelectorAll(".masonry-item");
+    // Mobile Hamburger Menu Logic
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".links");
+    const allNavItems = document.querySelectorAll(".links a");
 
-items.forEach(item=>{
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        hamburger.classList.toggle("active");
+    });
 
-item.addEventListener("mousemove",(e)=>{
-
-const media=item.querySelector("img,video");
-
-const rect=item.getBoundingClientRect();
-
-const x=e.clientX-rect.left;
-const y=e.clientY-rect.top;
-
-const centerX=rect.width/2;
-const centerY=rect.height/2;
-
-const rotateX=((y-centerY)/centerY)*-6;
-const rotateY=((x-centerX)/centerX)*6;
-
-media.style.transform=
-`perspective(1000px)
-rotateX(${rotateX}deg)
-rotateY(${rotateY}deg)
-scale(1.03)`;
-
-});
-
-item.addEventListener("mouseleave",()=>{
-
-const media=item.querySelector("img,video");
-
-media.style.transform=
-"perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
-
-});
-
-});
-
+    allNavItems.forEach(item => {
+        item.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+        });
+    });
 </script>
 
 </body>
