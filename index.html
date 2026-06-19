@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhay Kumar Jha | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#0d0d0d;
+    --text:#f3efe7;
+    --muted:#9b978f;
+    --accent:#1c2d3d;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    animation: pageLoad 1.5s ease;
+}
+
+/* Film Grain */
+
+.grain{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.05;
+    background-image:
+    radial-gradient(circle, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size:4px 4px;
+    z-index:9999;
+}
+
+/* Cursor */
+
+.cursor{
+    width:20px;
+    height:20px;
+    border:1px solid rgba(255,255,255,.8);
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:99999;
+    transition:.2s;
+}
+
+.cursor.expand{
+    width:60px;
+    height:60px;
+}
+
+/* Navbar */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:30px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    backdrop-filter: blur(20px);
+background:rgba(10,10,10,.2);
+border-bottom:1px solid rgba(255,255,255,.05);
+backdrop-filter: blur(30px);
+background: rgba(10,10,10,.2);
+}
+
+.logo{
+
+font-family:'Cormorant Garamond',serif;
+font-size:2rem;
+letter-spacing:.1em;
+transition:.4s;
+cursor:pointer;
+
+}
+
+.logo:hover{
+
+letter-spacing:.2em;
+
+}
+
+.links{
+    display:flex;
+    gap:40px;
+}
+
+.links a{
+    text-decoration:none;
+    color:var(--text);
+    font-size:.85rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+    background:url("shot-5.jpeg");
+    background-size:cover;
+    background-position:center;
+    opacity:.18;
+    transform:scale(1.1);
+    animation: slowZoom 18s ease-in-out infinite alternate;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(
+        circle,
+        transparent 40%,
+        rgba(0,0,0,.7)
+    );
+
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+/* HERO */
+
+
+
+
+
+.overline{
+    letter-spacing:.4em;
+    color:var(--muted);
+    font-size:.8rem;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(4rem,10vw,8rem);
+    font-weight:300;
+    line-height:.95;
+    margin-top:30px;
+    text-shadow:
+0 0 60px rgba(255,255,255,.08);
+}
+
+.hero p{
+    color:var(--muted);
+    margin-top:30px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+}
+
+/* ABOUT */
+
+.about{
+    max-width:800px;
+    margin:auto;
+    padding:180px 30px;
+    text-align:center;
+}
+
+.about h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:4rem;
+    font-weight:300;
+    margin-bottom:40px;
+}
+
+.about p{
+    line-height:2;
+    color:var(--muted);
+    font-size:1.1rem;
+}
+
+/* GALLERY */
+
+.gallery{
+    padding:0 5% 100px;
+}
+
+.masonry{
+    column-count:3;
+    column-gap:2rem;
+}
+
+.masonry-item{
+    break-inside:avoid;
+    margin-bottom:2rem;
+    perspective:1000px;
+}
+
+.masonry-item img,
+.masonry-item video{
+    width:100%;
+    display:block;
+    border-radius:22px;
+    transition:.5s;
+   box-shadow:
+0 20px 50px rgba(0,0,0,.4),
+0 50px 120px rgba(0,0,0,.35);
+}
+
+.masonry-item:hover img,
+.masonry-item:hover video{
+    transform:scale(1.03);
+}
+
+@media(max-width:900px){
+    .masonry{
+        column-count:2;
+    }
+}
+
+@media(max-width:700px){
+
+    .links{
+        display:none;
+    }
+
+    .masonry{
+        column-count:1;
+    }
+
+    .hero h1{
+        font-size:4rem;
+    }
+}
+@keyframes slowZoom{
+
+0%{
+transform:scale(1.05);
+}
+
+100%{
+transform:scale(1.15);
+}
+
+}
+
+footer a{
+transition:.3s;
+}
+
+footer a:hover{
+opacity:.6;
+}
+
+
+.masonry .masonry-item:hover{
+opacity:1;
+}
+
+.masonry-item img,
+.masonry-item video{
+transition:
+transform .5s ease,
+opacity .5s ease,
+box-shadow .5s ease;
+}
+
+.masonry-item:hover img,
+.masonry-item:hover video{
+box-shadow:
+0 40px 90px rgba(0,0,0,.7);
+}
+.masonry:hover .masonry-item{
+opacity:.35;
+}
+
+.masonry .masonry-item:hover{
+opacity:1;
+z-index:100;
+}
+footer{
+
+padding:120px 30px;
+text-align:center;
+
+border-top:1px solid rgba(255,255,255,.05);
+
+background:
+linear-gradient(
+to bottom,
+transparent,
+rgba(255,255,255,.01)
+);
+
+}
+@keyframes pageLoad{
+
+0%{
+opacity:0;
+transform:translateY(20px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="grain"></div>
+<div class="cursor"></div>
+
+<nav>
+
+<div class="logo">
+A K J
+</div>
+
+<div class="links">
+<a href="#about">About</a>
+<a href="#work">Work</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-bg"></div>
+
+<div class="hero-content">
+
+<div style="
+font-size:.75rem;
+letter-spacing:.5em;
+color:#666;
+margin-bottom:30px;
+">
+ARCHIVE · MMXXVI
+</div>
+
+<div class="overline">
+ABHAY KUMAR JHA
+</div>
+
+
+<h1>
+Photographs<br>
+from places<br>
+I almost forgot.
+</h1>
+
+<p>
+Travel • Atmosphere • Light
+</p>
+
+</div>
+
+</section>
+
+<section class="about" id="about">
+
+<h2>Stories Through Light</h2>
+
+<p>
+A collection of fleeting moments, quiet places and memories that almost disappeared with time.
+These photographs are less about documenting reality and more about preserving how it felt to be there.
+</p>
+
+</section>
+
+<section class="gallery" id="work">
+
+<div class="masonry">
+    <div class="masonry-item"><img src="shot-1.jpeg"></div>
+<div class="masonry-item"><img src="shot-2.jpeg"></div>
+<div class="masonry-item"><img src="shot-3.jpeg"></div>
+
+<div class="masonry-item">
+    <video autoplay muted loop playsinline>
+        <source src="shot-26.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="masonry-item"><img src="shot-4.jpeg"></div>
+<div class="masonry-item"><img src="shot-5.jpeg"></div>
+<div class="masonry-item"><img src="shot-6.jpeg"></div>
+<div class="masonry-item"><img src="shot-7.jpeg"></div>
+<div class="masonry-item"><img src="shot-8.jpeg"></div>
+
+<div class="masonry-item">
+    <video autoplay muted loop playsinline>
+        <source src="shot-27.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="masonry-item"><img src="shot-9.jpeg"></div>
+<div class="masonry-item"><img src="shot-10.jpeg"></div>
+<div class="masonry-item"><img src="shot-11.jpeg"></div>
+<div class="masonry-item"><img src="shot-12.jpeg"></div>
+<div class="masonry-item"><img src="shot-13.jpeg"></div>
+<div class="masonry-item"><img src="shot-14.jpeg"></div>
+
+<div class="masonry-item">
+    <video autoplay muted loop playsinline>
+        <source src="shot-28.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="masonry-item"><img src="shot-15.jpeg"></div>
+<div class="masonry-item"><img src="shot-16.jpeg"></div>
+<div class="masonry-item"><img src="shot-17.jpeg"></div>
+<div class="masonry-item"><img src="shot-18.jpeg"></div>
+<div class="masonry-item"><img src="shot-19.jpeg"></div>
+<div class="masonry-item"><img src="shot-20.jpeg"></div>
+<div class="masonry-item"><img src="shot-21.jpeg"></div>
+<div class="masonry-item"><img src="shot-22.jpeg"></div>
+<div class="masonry-item"><img src="shot-23.jpeg"></div>
+<div class="masonry-item"><img src="shot-24.jpeg"></div>
+<div class="masonry-item"><img src="shot-25.jpeg"></div>
+</div>
+</section>
+
+<footer id="contact" style="
+padding:120px 30px;
+text-align:center;
+">
+
+<h2 style="
+font-family:'Cormorant Garamond',serif;
+font-size:4rem;
+font-weight:300;
+margin-bottom:30px;
+">
+Get In Touch
+</h2>
+
+<p style="
+color:#9b978f;
+margin-bottom:40px;
+line-height:2;
+">
+
+<a
+href="https://instagram.com/abhay.lmao"
+target="_blank"
+style="
+color:#f3efe7;
+text-decoration:none;
+"
+>
+Instagram — @abhay.lmao
+</a>
+
+<br><br>
+
+<a
+href="mailto:abhay.jha@somaiya.edu"
+style="
+color:#f3efe7;
+text-decoration:none;
+"
+>
+abhay.jha@somaiya.edu
+</a>
+
+</p>
+
+<p style="
+color:#666;
+font-size:.8rem;
+letter-spacing:.25em;
+text-transform:uppercase;
+">
+© 2026 ABHAY KUMAR JHA
+</p>
+
+</footer>
+
+<script>
+
+const cursor=document.querySelector(".cursor");
+
+document.addEventListener("mousemove",(e)=>{
+
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+
+});
+
+const items=document.querySelectorAll(".masonry-item");
+
+items.forEach(item=>{
+
+item.addEventListener("mousemove",(e)=>{
+
+const media=item.querySelector("img,video");
+
+const rect=item.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+
+const centerX=rect.width/2;
+const centerY=rect.height/2;
+
+const rotateX=((y-centerY)/centerY)*-6;
+const rotateY=((x-centerX)/centerX)*6;
+
+media.style.transform=
+`perspective(1000px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+scale(1.03)`;
+
+});
+
+item.addEventListener("mouseleave",()=>{
+
+const media=item.querySelector("img,video");
+
+media.style.transform=
+"perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
